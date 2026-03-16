@@ -42,11 +42,11 @@ func capitalize(word string) string {
 
 // 4
 func capitalizeTheNth(words []string, n int) []string {
-	start := len(words) - n
-	for i := start; i < len(words); i++ {
+	for i := len(words) - n; i < len(words); i++ {
 		words[i] = strings.ToUpper(words[i])
 	}
 	return words
+}
 }
 
 // 5
