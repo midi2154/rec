@@ -78,6 +78,20 @@ func aOrAn(nextWord string) string {
 	}
 }
 
+
+or // 7
+func aOrAn(word string) string {
+	if word == "" {
+		return "a"
+	}
+	switch word[0] | 32 { // lowercase ASCII trick
+	case 'a', 'e', 'i', 'o', 'u', 'h':
+		return "an"
+	}
+	return "a"
+}
+
+
 // 8
 func fixArticles(text string) string {
 	words := strings.Fields(text)
@@ -98,6 +112,20 @@ func fixArticles(text string) string {
 	}
 
 	return strings.Join(words, " ")
+
+
+	or 8//
+	func fixArticles(s string) string {
+	w := strings.Fields(s)
+	for i := 0; i < len(w)-1; i++ {
+		if w[i] != "a" && w[i] != "A" { continue }
+		a := aOrAn(strings.Trim(w[i+1], ".,!?"))
+		if w[i] == "A" { a = strings.Title(a) }
+		w[i] = a
+	}
+	return strings.Join(w, " ")
+}
+
 }
 
 // 9
